@@ -1,11 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const komikController = require('../controller/komikController');
+const komikController = require('../controllers/komikController');
+
+const {
+    komikSchema, idSchema, validateBody, validateParams
+} = require('../middleware/komikvalidator');
 
 router.get('/komik', komikController.getAllKomik);
-router.get('/komik/:id', komikController.getKomikbyId);
-router.post('/komik', komikController.createKomik);
-router.put('/komik/:id', komikController.updateKomik);
-router.delete('/komik/:id', komikController.deleteKomik);
+router.get('/komik/:id', validateParams(idSchema), komikController.getKomikById);
+router.post('/komik', validateBody(komikSchema), komikController.createKomik);
+router.put('/komik/:id', validateParams(idSchema), validateBody(komikSchema), komikController.updateKomik);
+router.delete('/komik/:id', validateParams(idSchema), komikController.deleteKomik);
 
 module.exports = router;
