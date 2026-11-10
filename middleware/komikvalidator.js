@@ -19,7 +19,7 @@ const idSchema = Joi.object({
     id: Joi.number().integer().positive().required()
 });
 
-function validatebody(skema) {
+function validateBody(skema) {
     return (req, res, next) => {
         const { error, value } = skema.validate(req.body, {
         abortEarly: false,

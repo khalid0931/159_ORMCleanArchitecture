@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const komikController = require('../controllers/komikController');
+const komikController = require('../controllers/komikcontroller');
 
 const {
     komikSchema, idSchema, validateBody, validateParams
