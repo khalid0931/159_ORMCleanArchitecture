@@ -10,7 +10,7 @@ async function getAllKomik(req, res) {
     }
 }
 
-async function getKomikbyId(req, res) {
+async function getKomikById(req, res) {
     const { id } = req.params;
     try {
         const komik = await db.Komik.findByPk(id);
@@ -72,7 +72,7 @@ async function deleteKomik(req, res) {
 
 module.exports = {
     getAllKomik,
-    getKomikbyId,
+    getKomikById,
     createKomik,
     updateKomik,
     deleteKomik
